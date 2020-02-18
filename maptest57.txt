@@ -1,0 +1,33 @@
+import React, { UseEffect, useState } from 'react';
+const App = () => {
+
+  const [text, settext] = useState('');
+  const [todo_text, settodo] = useState([{ Name: "Aimer" }]);
+  const Show_text = (data) => {
+    data.preventDefault();
+    settodo([...todo_text, { Name: text }])
+  }
+  return (
+    <div>
+      <label>
+        Something todo
+    </label>
+      <form onSubmit={Show_text}>
+        <input type="Text" Name="text" onChange={(data) => settext(data.target.value)}></input>
+        <div>
+          {
+            todo_text.map((item, index) => {
+              return (
+                <li key={index}>
+                  {item.Name}
+                </li>
+              )
+            })
+          }
+        </div>
+      </form>
+
+    </div>
+  )
+}
+export default App;
