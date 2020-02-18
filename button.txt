@@ -1,0 +1,12 @@
+import React ,{useState} from 'react' ;
+const App =()=> {
+const [num_plus,setnum_plus] = useState(0); 
+return(
+  <div>
+    <h1> Increment Number : {num_plus}</h1>
+    <button onClick={ () => setnum_plus(num_plus + 1) }>+ </button>
+    <button onClick={ () => setnum_plus(num_plus - 1) }>- </button>
+  </div>
+  )
+}
+export default App;

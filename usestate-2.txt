@@ -1,0 +1,15 @@
+import React ,{useState} from 'react' ;
+const App_del =(props)=> {
+
+return(
+  <div>
+    <h1> Number Update : {props.plus}</h1>
+    <button onClick={ () => props.setplus(props.plus + 1) }> + </button>
+    <button onClick={ () => props.setplus(props.plus - 1) }> - </button>
+  </div>
+
+
+
+  )
+}
+export default App_del;

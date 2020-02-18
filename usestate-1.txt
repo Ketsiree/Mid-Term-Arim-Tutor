@@ -1,0 +1,15 @@
+import React ,{useState} from 'react' ;
+import App_del from './App_del'
+const App =(props)=> {
+const [plus,setplus] = useState(0); 
+return(
+  <div>
+    <App_del plus={plus} setplus={setplus} />
+  </div>
+  )
+}
+export default App;
+
+// const ADD_DE =()=>{
+//   setplus(plus+1)
+// }

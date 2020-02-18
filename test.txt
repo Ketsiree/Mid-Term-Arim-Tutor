@@ -1,0 +1,101 @@
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import axios from 'axios';
+
+
+const ShowplayerName = (props) => (
+  <div>
+    Name: {props.name}
+    Surname: {props.surname}
+  </div>
+)
+
+const App = () => {
+
+
+  const [foo, setFoo] = useState('Steven')
+
+  const [count, setCount] = useState(0);
+  // const [data, setData] = useState({ users: [] });
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios(
+  //       'https://jsonplaceholder.typicode.com/users',
+  //     );
+
+  //     setData({
+  //       users: result.data
+  //     });
+  //   };
+
+  //   fetchData();
+  // }, []);
+  const URL = 'https://api.github.com/users/Ketsiree'
+
+  const [avatar_url, setAvatar_url] = useState('')
+
+  const fetchUser = async () => {
+
+    const response = await fetch(URL);
+    setAvatar_url((await response.json()).avatar_url)
+    console.log(avatar_url)
+  }
+
+
+  return (
+    <div>
+
+      <div>
+        <ShowplayerName name="Steven" surname="Gerrard" /> <br />
+        Number : {foo}
+        <button onClick={() => setFoo('8')}> Click Me </button>
+      </div>
+
+      <div className="center" >
+        <h1>WE ARE LIVERPOOL</h1>
+        <h2>THIS MEANS MORE</h2>
+      </div>
+
+      <div className="container">
+        <div className="row"></div>
+        <div className="column-66"></div>
+        <h1 className="xlarge-font"><b>HISTORY</b></h1>
+        <p><span>สโมสรลิเวอร์พูล</span>จอห์น โฮลดิง นักธุรกิจชาวเมืองลิเวอร์พูลได้เช่าพื้นที่บริเวณ แอนฟีลด์ โรด เพื่อใช้สร้างสนามฟุตบอล และเมื่อสร้างเสร็จได้ให้เอฟเวอร์ตัน เช่าเป็นสนามแข่งขันฟุตบอล และเมื่อทีมเอฟเวอร์ตันได้เข้าสู่สมาชิกฟุตบอลลีก จอห์น โฮลดิง ทีมเอฟเวอร์ตันได้ย้ายสนามไปอีกฝากของสวนสาธารณะสแตนลีย์พาร์ก เพื่อไปสร้างสนามเป็นของตัวเองโดยใช้ชื่อสนามว่า กูดิสันพาร์ค ดังนั้น จอห์น โฮลดิง ต้องการสร้างทีมฟุตบอล จึงไปชวนเพื่อนสนิทของเขาชื่อ จอห์น แมคเคนน่า มาเป็นประธานสโมสรและได้ตั้งชื่อทีมฟุตบอลนี้ว่า Liverpool Football Club</p>
+      </div>
+
+
+      <div>
+        Counter: {count} <br />
+        <button onClick={() => setCount(count + 1)}> + </button>
+
+        <button onClick={() => setCount(count - 1)}> - </button>
+
+        <div>
+          <input
+            type="text"
+            value={count}
+            placeholder="Result"
+            width="100px"
+            height="100px" />
+        </div>
+      </div>
+
+      <div>
+        <img src={avatar_url} width="100px" height="100px" />
+        <br />
+          <button onClick={fetchUser}>FETCH</button>
+          <br />
+          <input
+            type="text"
+            placeholder="User ID"
+            value={avatar_url}
+            onChange={event => setAvatar_url(event.target.value)}
+          />
+            <br />
+      </div>
+
+      </div>
+      )}
+      
+      export default App;
