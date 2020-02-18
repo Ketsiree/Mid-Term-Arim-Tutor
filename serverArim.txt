@@ -1,0 +1,25 @@
+var net = require('net')
+var host = '127.0.0.1'
+var port = 6969
+var i = 1;
+var a;
+net.createServer(server => {
+    server.on('data', data => {
+        console.log(data.toString())
+        server.write("OK")
+        if (i == 1) {
+            a = parseInt(data)
+            i++
+        }
+        else {
+            a = a + parseInt(data)
+            console.log(a.toString())
+        }
+    })
+    server.on('close', data => {
+
+    })
+    server.on('error', data => {
+
+    })
+}).listen(port, host)

@@ -1,0 +1,19 @@
+var net = require('net')
+var host = '127.0.0.1'
+var port = 6969
+var ans;
+var client = new net.Socket();
+client.connect(port,host,()=>{
+    client.write("10")
+})
+client.on('data',data=>{
+    console.log(data.toString());
+    client.write("10");
+    client.destroy()
+})
+client.on('close',data=>{
+    console.log("close");
+})
+client.on('err',data=>{
+        
+})
